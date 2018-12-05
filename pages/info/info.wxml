@@ -1,0 +1,199 @@
+<!--pages/info/info.wxml-->
+<view class="info-header">
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+
+      <view class="info-title">
+        <image src="/images/detail.png" style="width: 18px;height: 18px;margin-right: 5px" /> {{info.title}}
+      </view>
+      <!-- 工资 -->
+      <view>
+        <image src="/images/payment.png" style="width: 18px;height: 18px;margin-right: 5px" /> 会员工资：{{vipmoney}} 非会员工资：{{noVipmoney}}
+      </view>
+    </view>
+    <view>
+      <!-- <view class="info-wages">
+        {{info.wages}}元/{{info.wages_unit}}
+      </view> -->
+    </view>
+
+  </view>
+</view>
+<view class="info" style="padding-bottom:80px;">
+  <view class="weui-panel">
+    <view class="weui-panel__hd" style="padding-right:5px;">基本信息
+      <label class="button-management" bindtap="handleManagement" wx:if="{{itemList[1].length>0}}">管理</label>
+      <label class="button-management" bindtap="handleEdit" wx:if="{{itemList[0].length>0}}">编辑</label>
+      <label style='float:right;'>浏览量 : {{info.view}}</label>
+    </view>
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <view url="" class="weui-cell" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image src="/images/calendar.png" style="width: 15px;height: 15px;margin-right: 5px" />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>
+                <label class="info-name">发布时间：</label>{{info.created_at}}</view>
+            </view>
+          </view>
+          <view url="" class="weui-cell" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image src="/images/location.png" style="width: 15px;height: 15px;margin-right: 5px" />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>
+                <label class="info-name">工作区域：</label>{{info.province+','+info.city+','+info.district}}</view>
+            </view>
+          </view>
+          <view url="" class="weui-cell" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image src="/images/payment.png" style="width: 15px;height: 15px;margin-right: 5px" />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>
+                <label class="info-name">结算方式：</label>{{info.payment_method}}</view>
+            </view>
+          </view>
+          <view url="" class="weui-cell" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image src="/images/content.png" style="width: 15px;height: 15px;margin-right: 5px" />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>
+                <label class="info-name">招聘人数：</label>{{info.recruitment_number}} {{info.sex?('('+info.sex+')'):''}}</view>
+            </view>
+          </view>
+          <view url="" class="weui-cell" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image src="/images/calendar.png" style="width: 15px;height: 15px;margin-right: 5px" />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>
+                <label class="info-name">报名截止：</label>{{info.join_deadline}}</view>
+            </view>
+          </view>
+          <navigator url="/pages/page/page?a=aggrement" class="weui-cell" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image src="/images/aggrement.png" style="width: 15px;height: 15px;margin-right: 5px" />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>报名表示您已同意
+                <view class="weui-agree__link">《中创卓立用户协议》</view>
+              </view>
+            </view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-panel">
+    <view class="weui-panel__hd">
+      工作详情
+    </view>
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_text">
+        <view style="color:#f00;font-size:12px;margin-bottom:5px;">
+          <label>工作时间：</label>{{info.started_at+'至'+info.ended_at}}</view>
+        <view class="info-details">
+          <text>{{info.job_details}}</text>
+        </view>
+        <view class="weui-media-box__info">
+          <view class="weui-media-box__info__meta">
+            <label class="info-authentication-label" wx:if="{{info.user.role=='city'}}">官方发布</label>
+            <label class="info-authentication-label" wx:if="{{info.authentication_tag}}">认证商家{{info.user.authentication_name?':'+info.user.authentication_name:''}}</label>
+            <label class="info-authentication-label" wx:if="{{info.vip}}">VIP</label>
+          </view>
+          <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{info.district}}</view>
+        </view>
+        <view class="info-tip" wx:if="{{info.authentication_tag}}">温馨提示：此信息经平台认证机构发布，安全靠谱，请您放心报名</view>
+        <view class="info-tip" wx:else>温馨提示：此信息未经认证机构发布，请您自行协商具体事宜，谨慎报名</view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-panel" wx:if="{{info.mark.length>0}}">
+    <view class="weui-panel__hd">
+      特殊备注
+    </view>
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_text">
+        <view class="info-details">
+          <text>{{info.mark}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__hd">留言咨询</view>
+    <view class="weui-panel__bd">
+      <view class="weui-loadmore weui-loadmore_line" wx:if="{{comments.length==0}}">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无留言</view>
+      </view>
+      <view class="weui-media-box weui-media-box_appmsg" wx:for="{{comments}}" wx:key="*this">
+        <view class="weui-media-box__hd">
+          <image class="userinfo-avatar" src="{{item.user.avatar}}" />
+        </view>
+        <view class="weui-media-box__bd">
+          <p class="weui-media-box__desc">{{item.user.nickname+'：'+item.content}}</p>
+          <p class="weui-media-box__desc" wx:if="{{item.replied_content!=null}}">{{'回复：'+item.replied_content}}</p>
+        </view>
+        <view class="weui-media-box__bd" wx:if="{{item.replied_content==null}}">
+          <button class="weui-btn mini-btn button-reply" type="primary" size="mini" bindtap="openComment" data-id="{{item.id}}" wx:if="{{userid==info.user_id}}">回复</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-panel weui-panel_access" wx:if="{{order}}">
+    <view class="weui-panel__hd">报名列表 (已报:{{info.join_number+'/'+info.recruitment_number}})</view>
+    <view class="weui-panel__bd">
+      <view class="weui-loadmore weui-loadmore_line" wx:if="{{orders.length==0}}">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无报名</view>
+      </view>
+      <view class="weui-media-box weui-media-box_appmsg" wx:for="{{orders}}" wx:key="*this">
+        <view class="weui-media-box__hd">
+          <image class="userinfo-avatar" src="{{item.user.avatar}}" />
+        </view>
+        <view class="weui-media-box__bd">
+          <p class="weui-media-box__title">{{item.user.nickname}} ({{genders[item.user.gender]}}{{item.pay_wages_amount?'，'+item.pay_wages_amount+'元，已发放':''}})
+            <label class="info-authentication-label" style="margin-left:5px;" wx:if="{{item.user.vip}}">VIP</label>
+          </p>
+          <p class="weui-media-box__desc">报名时间: {{item.created_at}}</p>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{!loadmore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已到底部</view>
+  </view>
+</view>
+<view class="widget-add" bindtap="add" style="bottom:80px;">
+  <view class="add-wrap">
+    <view class="icon icon-top"></view>
+    <view>留言</view>
+  </view>
+</view>
+<form class="info-footer" bindsubmit="formSubmit" bindreset="formReset" report-submit="true">
+  <view class="weui-flex">
+    <button class="info-footer-icon" open-type="share" plain="true">
+      <image src="/images/share.png"></image>
+      <view class="info-label">分享</view>
+    </button>
+    <view class="weui-flex__item">
+      <button class='weui-btn' type='primary'>会员报名</button>
+    </view>
+    <!-- <view class="info-footer-icon" style="margin-right:25px;" bindtap="handleService">
+      <image src="/images/service.png" style="margin-bottom:1px;"></image>
+      <view class="info-label">客服</view>
+    </view> -->
+    <view class="weui-flex__item">
+      <button class="weui-btn" formType="submit" type="{{info.joinButtonType}}" disabled="{{info.joinButtonDisabled || loading}}" loading="{{loading}}" wx:if="{{info.joinButtonText!='已报名:立即联系'}}">{{info.joinButtonText}}</button>
+      <button class="weui-btn" type="primary" bindtap="handleContact" wx:if="{{info.joinButtonText=='已报名:立即联系'}}">{{info.joinButtonText}}</button>
+    </view>
+  </view>
+</form>
+<modal hidden="{{hiddenModal}}" title="提示" confirm-text="确定" cancel-text="取消" bindcancel="handleCancel" bindconfirm="handleConfirm">
+  <view>为避免放鸽子现象，本次报名会收取{{deposit}}元保证金，到达工作现场签到自动退回个人账户余额。</view>
+  <view style="color:red;">注意：到达工作现场报到时一定要找负责人签到，否则保证金无法退回！</view>
+</modal>

@@ -1,0 +1,4 @@
+/* pages/user/authentication/authentication.wxss */
+page {
+  background: #F8F8F8;
+}

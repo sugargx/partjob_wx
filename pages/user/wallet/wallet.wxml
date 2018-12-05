@@ -1,0 +1,48 @@
+<!--pages/user/wallet/wallet.wxml-->
+<view class="page">
+  <view class="weui-form-preview">
+    <view class="weui-form-preview__hd">
+      <view class="weui-form-preview__label">我的钱包</view>
+      <view class="weui-form-preview__value_in-hd">{{money}} 元</view>
+    </view>
+    <view class="weui-form-preview__bd">
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">钱包余额</view>
+        <view class="weui-form-preview__value">{{money}} 元</view>
+      </view>
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">报名押金</view>
+        <view class="weui-form-preview__value">{{deposit}} 元</view>
+      </view>
+    </view>
+    <view class="weui-form-preview__ft">
+      <navigator url="/pages/user/money/money?t=recharge" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="handleRecharge">充值</navigator>
+      <navigator url="/pages/user/money/money?t=transfers" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">提现</navigator>
+    </view>
+  </view>
+  <view class="weui-cells__title" style="margin:0 10px;-webkit-border-radius: 15rpx;border-radius: 15rpx;">交易记录：
+  </view>
+  <view class="weui-form-preview" wx:for="{{orders}}" wx:key="*this">
+    <view class="weui-form-preview__hd">
+      <view class="weui-form-preview__label">{{item.name}}</view>
+      <view class="weui-form-preview__value_in-hd">{{item.paid_amount}} 元</view>
+    </view>
+    <view class="weui-form-preview__bd">
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">交易类型</view>
+        <view class="weui-form-preview__value">{{item.transaction_type}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">交易时间</view>
+        <view class="weui-form-preview__value">{{item.paid_at}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">交易金额</view>
+        <view class="weui-form-preview__value">{{item.paid_amount}}元</view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{!loadmore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已到底部</view>
+  </view>
+</view>

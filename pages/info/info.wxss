@@ -1,0 +1,27 @@
+/* pages/info/info.wxss */
+@import '../../wxParser/index.wxss';
+
+page {
+  background: #f8f8f8;
+}
+
+.weui-media-box__info__meta {
+  margin-top: 5px;
+}
+
+.button-reply {
+  line-height: 1.8 !important;
+  padding: 0 0.8em !important;
+  margin-left: 5px;
+  font-size: 11px !important;
+}
+
+.info-tip {
+  color: #f00;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.weui-loadmore__tips_in-line{
+  background-color: #f8f8f8;
+}

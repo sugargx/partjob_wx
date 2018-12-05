@@ -1,0 +1,4 @@
+/* pages/user/money/money.wxss */
+page {
+  background: #F8F8F8;
+}

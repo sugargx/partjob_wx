@@ -1,0 +1,121 @@
+Page {
+  background: #f8f8f8;
+}
+
+.first {
+  background: #fff;
+  padding: 20rpx;
+}
+
+.helpmoney {
+  font-size: 50rpx;
+  height: 200rpx;
+  position: relative;
+  left: 10%;
+  padding-top: 50rpx;
+}
+
+.but_special {
+  border: 1px #1fbf23 solid;
+  background: #fff;
+  padding: 10rpx;
+  border-radius: 100rpx;
+  font-size: 45rpx;
+}
+
+.num {
+  font-size: 30rpx;
+  color: #999;
+  margin: 20rpx;
+  text-align: center;
+}
+
+.all {
+  font-size: 30rpx;
+  margin-top: 50rpx;
+}
+
+.item {
+  margin: 30rpx;
+}
+
+.item image {
+  vertical-align: middle;
+}
+
+.name {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 25rpx;
+}
+
+.tag {
+  border: 1px solid red;
+  padding: 5rpx;
+  vertical-align: middle;
+  margin-left: 15rpx;
+  font-size: 25rpx;
+  color: red;
+}
+
+.count {
+  display: inline-block;
+  vertical-align: middle;
+  float: right;
+}
+
+.count_num {
+  color: red;
+}
+
+.second {
+  background: #fff;
+  margin-top: 25rpx;
+  color: #999;
+}
+
+.info {
+  padding: 20rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+
+
+.show {
+  padding: 30rpx;
+}
+
+.add{
+  background: burlywood;
+  padding: 20rpx;
+  /* height: 200rpx; */
+  width: 100%;
+  position: fixed;
+  bottom: 0rpx;
+}
+.add image {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+  padding-top: 20rpx;
+}
+.add .show_info{
+  vertical-align: middle;
+  padding-left: 20rpx;
+  padding-top: 20rpx;
+  font-size: 30rpx;
+  display: inline-block;
+}
+.add button{
+  display: inline-block;
+  border: 1px solid #1fbf23;
+  background: none;
+  color: #1fbf23;
+  vertical-align: middle;
+  float: right;
+  height: 80rpx;
+  width: 150rpx;
+  margin-right: 50rpx;
+}

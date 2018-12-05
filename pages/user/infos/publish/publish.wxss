@@ -1,0 +1,4 @@
+/* pages/user/infos/publish/publish.wxss */
+page {
+  background: #F8F8F8;
+}

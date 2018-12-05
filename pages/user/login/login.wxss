@@ -1,0 +1,37 @@
+/* pages/login/login.wxss */
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #da251c;
+  height: 360rpx;
+}
+
+.user-avatar {
+  width: 140rpx;
+  height: 140rpx;
+  margin-top: 100rpx;
+  border-radius: 50%;
+  border: 2px solid #e65850;
+}
+
+.user-nickname {
+  color: #fff;
+  margin-top:10rpx;
+  font-size:14px;
+}
+
+.user-cells {
+  margin-top: 0;
+}
+
+.user-cell-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 20rpx;
+  display: block;
+  margin-top:5rpx;
+}
+.weui-vcode-btn{
+  font-size:12px;
+}

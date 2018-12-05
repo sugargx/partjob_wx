@@ -1,0 +1,202 @@
+<!--pages/user/infos/publish/publish.wxml-->
+<view class="page">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="weui-cells__title" wx:if="{{publish[0]!=-1 && !id}}">发布兼职信息，今天您可以发布{{publish[0]}}条，已发布{{publish[1]}}条。</view>
+    <view class="weui-cells__title" wx:if="{{publish[0]==-1 && !id}}">发布兼职信息</view>
+    <view class="weui-cells__title" wx:if="{{id}}">编辑【{{info.title}}】</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input" wx:if="{{!id}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">标题</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入标题" name="title" value="{{info.title}}" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select" wx:if="{{!id}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">类别</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindCategoryChange" value="{{categories[category]}}" range="{{categories}}" name="category">
+            <view class="weui-select weui-select_in-select-after">
+              {{categories[category]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select" wx:if="{{!id}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">地区</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="region" bindchange="bindRegionChange" value="{{region}}" name="region">
+            <view class="weui-select weui-select_in-select-after">{{region}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select" wx:if="{{!id}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">支付方式</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="selector" bindchange="bindPaymentMethodChange" value="{{payment_methods[payment_method]}}" range="{{payment_methods}}" name="payment_method">
+            <view class="weui-select weui-select_in-select-after">{{payment_methods[payment_method]}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select" wx:if="{{!id}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">非会员工资</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="digit" class="weui-input" placeholder="请输入工资" name="wages" style="float:left;width:70%;" />
+          <picker mode="selector" bindchange="bindWagesUnitChange" value="{{wages_units[wages_unit]}}" range="{{wages_units}}" name="wages_unit" style="float:right;">
+            <view class="weui-select weui-select_in-select-after"> {{wages_units[wages_unit]}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select" wx:if="{{!id}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">会员工资</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="digit" class="weui-input" placeholder="请输入工资" name="wages" style="float:left;width:70%;" />
+          <picker mode="selector" bindchange="bindWagesUnitChange" value="{{wages_units[wages_unit]}}" range="{{wages_units}}" name="wages_unit" style="float:right;">
+            <view class="weui-select weui-select_in-select-after"> {{wages_units[wages_unit]}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">招聘人数</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" type="number" placeholder="请输入招聘人数" name="recruitment_number" value="{{info.recruitment_number}}" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select" wx:if="{{!id}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">性别</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindSexChange" value="{{sexes[sex]}}" range="{{sexes}}" name="sex">
+            <view class="weui-select weui-select_in-select-after">
+              {{sexes[sex]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select" wx:if="{{!id}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">报名截至日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{join_deadline}}" bindchange="bindJoinDeadlineChange" name="join_deadline">
+            <view class="weui-select weui-select_in-select-after">{{join_deadline}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select" wx:if="{{!id}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">工作开始日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{started_at}}" bindchange="bindStartedAtChange" name="started_at">
+            <view class="weui-select weui-select_in-select-after">{{started_at}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select" wx:if="{{!id}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">工作结束日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{ended_at}}" bindchange="bindEndedAtChange" name="ended_at">
+            <view class="weui-select weui-select_in-select-after">{{ended_at}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">工作详情</view>
+        </view>
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入工作日期、工作时间、工作详情等内容" style="height: 10em" name="job_details" maxlength="-1" value="{{info.job_details}}" />
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">特殊备注</view>
+        </view>
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入特殊备注内容" style="height: 3em" name="mark" maxlength="-1" value="{{info.mark}}" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select" wx:if="{{!id}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">集合日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{gathering_date}}" bindchange="bindGatheringDateChange" name="gathering_date">
+            <view class="weui-select weui-select_in-select-after">{{gathering_date}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select" wx:if="{{!id}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">集合时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="time" value="{{gathering_time}}" bindchange="bindGatheringTimeChange" name="gathering_time">
+            <view class="weui-select weui-select_in-select-after">{{gathering_time}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input" wx:if="{{!id}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">集合地点</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入集合地点" name="gathering_address" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input" wx:if="{{!id}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">联系人</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入联系人姓名" name="contact_name" value="{{contact_name}}" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input" wx:if="{{!id}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">联系电话</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入联系电话" name="contact_phone" type="number" value="{{contact_phone}}" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input" wx:if="{{!id}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">收取保证金</view>
+        </view>
+        <view class="weui-cell__bd">
+          <switch class="weui-input" style="float:right;" name="deposit" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input" wx:if="{{role=='city' && !id}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">仅限会员</view>
+        </view>
+        <view class="weui-cell__bd">
+          <switch class="weui-input" style="float:right;" name="vip" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__tips">{{tip}}</view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" formType="submit">确定</button>
+    </view>
+  </form>
+</view>

@@ -1,0 +1,4 @@
+/* pages/user/experiences/publish/publish.wxss */
+page {
+  background: #f8f8f8;
+}

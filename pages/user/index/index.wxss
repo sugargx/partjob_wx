@@ -1,0 +1,31 @@
+/* pages/user/index/index.wxss */
+.user-cells {
+  margin-top: 0;
+}
+
+.user-cell-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 20rpx;
+  display: block;
+  margin-top:5rpx;
+}
+
+.weui-cell__bd p{
+  font-size:14px;
+}
+
+/* 新加开通会员提示 */
+.vipinfo{
+  width: 86%;
+  height: 80px;
+  background-color:#ffccff;
+  position: fixed;
+  top: 18%;
+  left: 4%;
+  border-top-left-radius:1em;
+  border-top-right-radius:1em;
+  border-bottom-right-radius:0em;
+  border-bottom-left-radius:0em;
+  padding: 10px;
+}

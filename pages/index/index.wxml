@@ -1,0 +1,108 @@
+<!--index.wxml-->
+<view class="weui-flex top">
+  <view>
+    <navigator class="city" url='/pages/city/city' hover-class="none">
+      <image src='/images/location.png'></image>{{city}}
+    </navigator>
+  </view>
+  <view class="weui-flex__item">
+    <view class="weui-search-bar search">
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box" style='background-color:#F0F0F0;'>
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="请输入您喜欢的兼职" value="{{inputVal}}" bindinput="inputTyping" confirm-type="请输入您喜欢的兼职" bindconfirm="search" />
+          <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+            <icon type="clear" size="14"></icon>
+          </view>
+        </view>
+        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+          <icon class="weui-icon-search icon-search" type="search" size="14"></icon>
+          <view class="weui-search-bar__text">搜索</view>
+        </label>
+      </view>
+    </view>
+  </view>
+</view>
+<view>
+  <swiper indicator-dots="true" autoplay="true" circular="true" class="slide">
+    <block wx:for="{{slides}}" wx:key="*this">
+      <swiper-item class="slide-item" data-url="{{item.url}}" bindtap="handleSwiper">
+        <image src="{{item.image}}" class="slide-image" mode="aspectFill" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class='icon weui-flex'>
+  <view class='weui-flex__item'>
+    <navigator url='/pages/page/page?a=club' hover-class="none">
+      <view>
+        <image mode="aspectFill" src='/images/home-icon1.png'></image>
+      </view>
+      <view class='wenzi'>会员</view>
+    </navigator>
+  </view>
+  <view class='weui-flex__item'>
+    <navigator url='/pages/lists/lists?t=practice' hover-class="none">
+      <view>
+        <image mode="aspectFill" src='/images/home-icon3.png'></image>
+        <view class='wenzi'>实习</view>
+      </view>
+    </navigator>
+  </view>
+  <view class='weui-flex__item'>
+    <navigator url='/pages/lists/lists?t=experience' hover-class="none">
+      <view>
+        <image mode="aspectFill" src='/images/home-icon4.png'></image>
+      </view>
+      <view class='wenzi'>成长体验</view>
+    </navigator>
+  </view>
+
+  <view class='weui-flex__item'>
+    <navigator url='/pages/lists/lists?t=specialty' hover-class="none">
+      <view>
+        <image mode="aspectFill" src='/images/home-icon5.png'></image>
+      </view>
+      <view class='wenzi'>特长生</view>
+    </navigator>
+  </view>
+</view>
+<view class="info" wx:if="{{infos.length>0}}">
+  <view class='weui-flex' class="info-top">
+    <view>最新兼职</view>
+  </view>
+  <view wx:for="{{infos}}" wx:key="*this">
+    <navigator class='weui-flex info-content' hover-class="none" url='/pages/info/info?id={{item.id}}'>
+      <view>
+        <view class="info-tag">{{item.category}}</view>
+      </view>
+      <view class='weui-flex__item'>
+        <view class='info-title'>{{item.title}}</view>
+        <view class='renzheng'>
+          <view class='info-desc'>
+            <label class="info-authentication-label" wx:if="{{item.user.role=='city'}}">官方发布</label>
+            <label class="info-authentication-label" wx:if="{{item.authentication_tag}}">认证商家</label>
+            {{item.district}} | {{item.payment_method}}
+          </view>
+        </view>
+      </view>
+      <view>
+        <view class='info-price'>
+          <label class="info-price-label">{{item.wages}}元/{{item.wages_unit}}</label>
+        </view>
+        <view class='info-top-tag' wx:if="{{item.top!=null}}">
+          <label class="info-top-label">置顶</label>
+        </view>
+        <view class="info-status" wx:if="{{item.tag!=''}}">{{item.tag}}</view>
+      </view>
+    </navigator>
+  </view>
+  <view class="more" bindtap="handMore">
+    <span>查看更多>></span>
+  </view>
+</view>
+<view wx:for="{{slides1}}" wx:key="*this">
+  <navigator url="{{item.url}}" class="">
+    <view class="list" style="background-image:url('{{item.image}}');background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;">{{item.name}}</view>
+  </navigator>
+</view>

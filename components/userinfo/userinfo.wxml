@@ -1,0 +1,7 @@
+<!--components/userinfo.wxml-->
+<navigator url='{{url}}' class='user' hover-class="none">
+  <image class='user-avatar' src='{{avatar}}' background-size='cover'></image>
+  <view class='user-nickname' hover-class='none'>{{nickname}}
+    <label class="user-label" wx:if="{{label.length>0}}">{{label}}</label>
+  </view>
+</navigator>

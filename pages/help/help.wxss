@@ -1,0 +1,45 @@
+/* pages/help/help.wxss */
+
+Page {
+  height: 100%;
+}
+
+.body {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.content {
+  padding: 10rpx;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 9%;
+}
+
+.info {
+  height: 200rpx;
+  width: 90%;
+  background-color: white;
+  margin: 0 auto;
+  padding: 20rpx;
+  font-size: 40rpx;
+  border-radius: 10rpx;
+}
+
+.newpay {
+  color: white;
+  font-size: 40rpx;
+  padding: 20rpx;
+  text-algin: center;
+  position: relative;
+  left: 28%;
+}
+
+.avator {
+  width: 100px;
+  height: 100px;
+  margin: 20rpx auto;
+  display: block;
+}

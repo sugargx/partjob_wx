@@ -1,0 +1,4 @@
+/* pages/comment/comment.wxss */
+page {
+  background: #F8F8F8;
+}

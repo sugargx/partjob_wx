@@ -1,0 +1,5 @@
+/* pages/practices/practice/practice.wxss */
+@import '../../wxParser/index.wxss';
+Page {
+  background: #F8F8F8;
+}

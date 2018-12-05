@@ -1,0 +1,30 @@
+<!--pages/page/page.wxml-->
+<import src="../../wxParser/index.wxml" />
+<view class="page" style="padding-bottom:{{a=='club'?80:0}}px;">
+  <view class="container">
+    <view class="page__hd">
+      <view class="page__title">{{article.title}}</view>
+      <view class="weui-media-box__info">
+        <view class="weui-media-box__info__meta">{{article.created_at}}</view>
+      </view>
+    </view>
+    <view class="wxParser">
+      <template is="wxParser" data="{{wxParserData:richText.nodes}}" />
+    </view>
+  </view>
+  <view class="info-footer" wx:if="{{a=='club'}}">
+    <view class="weui-flex">
+      <button class="info-footer-icon" open-type="share" plain="true">
+        <image src="/images/share.png"></image>
+        <view class="info-label">分享</view>
+      </button>
+      <view class="info-footer-icon" style="margin-right:25px;" bindtap="handleService">
+        <image src="/images/service.png" style="margin-bottom:1px;"></image>
+        <view class="info-label">客服</view>
+      </view>
+      <view class="weui-flex__item">
+        <button class="weui-btn" type="primary" bindtap="handleAuthentication">立即加入</button>
+      </view>
+    </view>
+  </view>
+</view>

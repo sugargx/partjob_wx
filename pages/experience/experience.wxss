@@ -1,0 +1,5 @@
+/* pages/experience/experience.wxss */
+@import '../../wxParser/index.wxss';
+page {
+  background: #f8f8f8;
+}

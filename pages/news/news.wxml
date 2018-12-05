@@ -1,0 +1,64 @@
+<view class="info">
+  <view class='weui-flex' class="info-top">
+    <view>通知消息</view>
+  </view>
+  <view class="empty" wx:if="{{fasle}}">
+    <image src="/images/empty.png" />
+    <view class='empty-text'>暂无通知</view>
+  </view>
+
+  <view class="item-list" wx:for="{{itemData}}" wx:for-item="item" wx:for-index="index" wx:key="that">
+    <view class="item-info" data-index="{{index}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" style="left:{{item.left + 'rpx'}}">
+      <image class="info-img" src="{{item.headappear}}"></image>
+      <view class="info-wrapper">
+        <view class="info-desc">
+          <view class="name">名字</view>
+          <span class="info-authentication-label" style='color:red;' wx:if="{{status}}">
+            未读
+          </span>
+          <span class="info-authentication-label" wx:if="{{!status}}">
+            已读
+          </span>
+        </view>
+        <view>
+          <label class="info-authentication-label">官方发布</label>
+          <label class="info-price-label" style='color:#999;float:right;'>2018-10-21</label>
+        </view>
+        <view style='padding-left:10rpx;' bindtap='newshow'>消息内容哈哈哈哈哈hh或哈哈哈哈哈哈哈哈哈或哈哈哈哈哈
+        </view>
+
+      </view>
+    </view>
+    <view class="item-oper">
+      <view class="oper-delete" bindtap="itemDelete" data-nick_name='{{item.nick_name}}' data-id="{{item.id}}">删除 </view>
+    </view>
+  </view>
+
+  <!-- <view wx:for="{{infos}}" wx:key="*this">
+    <navigator class='weui-flex info-content' hover-class="none">
+      <view>
+        <image src='/images/comment.png' style='width:50px;height:50px;border-radius:50%'></image>
+      </view>
+      <view class='weui-flex__item'>
+        <view class='info-title' style='padding-left:10rpx;font-size:30rpx;'>兼职名字</view>
+        <view style='padding-left:12rpx;'>
+          <label class="info-authentication-label" wx:if="{{item.user.role=='city'}}">官方发布</label>
+          <label class="info-price-label" style='color:#999;float:right;'>2018-10-21</label>
+        </view>
+        <view style='padding-left:10rpx;' bindtap='newshow'>消息内容哈哈哈哈哈hh或哈哈哈哈哈哈哈哈哈或哈哈哈哈哈</view>
+      </view>
+      <view>
+        <view class="info-authentication-label" style='color:red;' wx:if="{{status}}">
+            未读
+        </view>
+        <view class="info-authentication-label" wx:if="{{!status}}">
+            已读
+        </view>
+      </view>
+    </navigator>
+  </view> -->
+
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{!loadmore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已到底部</view>
+  </view>
+</view>

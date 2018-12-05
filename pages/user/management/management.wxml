@@ -1,0 +1,164 @@
+<!--pages/user/management/management.wxml-->
+<view class="page">
+  <view class="weui-tab">
+    <view class="weui-navbar">
+      <block wx:for="{{tabs}}" wx:key="*this">
+        <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+          <view class="weui-navbar__title">{{item}}</view>
+        </view>
+      </block>
+      <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+    </view>
+    <view class="weui-tab__panel">
+      <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+        <view class="empty" wx:if="{{items['infos'].length==0}}">
+          <image src="/images/empty.png" />
+          <view class='empty-text'>暂无内容</view>
+        </view>
+        <view class="weui-form-preview" wx:for="{{items['infos']}}" wx:key="*this">
+          <view class="weui-form-preview__hd">
+            <view class="weui-form-preview__label">{{item.title}}</view>
+            <!-- 未检验样式 -->
+            <view>
+              会员工资：<span class="weui-form-preview__value_in-hd">{{item.wages}}元/{{item.wages_unit}}</span>
+              非会员工资：<span class="weui-form-preview__value_in-hd">{{item.wages}}元/{{item.wages_unit}}</span>
+            </view>
+          </view>
+          <view class="weui-form-preview__bd">
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">地区</view>
+              <view class="weui-form-preview__value">{{item.province+','+item.city+','+item.district}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">支付方式</view>
+              <view class="weui-form-preview__value">{{item.payment_method}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">招聘人数</view>
+              <view class="weui-form-preview__value">{{item.recruitment_number}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">报名截至日期</view>
+              <view class="weui-form-preview__value">{{item.join_deadline}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">集合时间</view>
+              <view class="weui-form-preview__value">{{item.gathering_time}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">集合地点</view>
+              <view class="weui-form-preview__value">{{item.gathering_address}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">联系姓名</view>
+              <view class="weui-form-preview__value">{{item.contact_name}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">联系电话</view>
+              <view class="weui-form-preview__value">{{item.contact_phone}}</view>
+            </view>
+          </view>
+          <view class="weui-form-preview__ft">
+            <navigator url="/pages/info/info?id={{item.id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">查看详情</navigator>
+          </view>
+        </view>
+      </view>
+      <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+        <view class="empty" wx:if="{{items['practices'].length==0}}">
+          <image src="/images/empty.png" />
+          <view class='empty-text'>暂无内容</view>
+        </view>
+        <view class="weui-form-preview" wx:for="{{items['practices']}}" wx:key="*this">
+          <view class="weui-form-preview__hd">
+            <view class="weui-form-preview__label">{{item.title}}</view>
+            <view class="weui-form-preview__value_in-hd" style="visibility:hidden;">a</view>
+          </view>
+          <view class="weui-form-preview__bd">
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">状态</view>
+              <view class="weui-form-preview__value">{{item.status==1?'已发布':'排版中'}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">地区</view>
+              <view class="weui-form-preview__value">{{item.province+','+item.city+','+item.district}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">时间</view>
+              <view class="weui-form-preview__value">{{item.created_at}}</view>
+            </view>
+          </view>
+          <view class="weui-form-preview__ft">
+            <navigator url="/pages/practice/practice?id={{item.id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">查看详情</navigator>
+          </view>
+        </view>
+      </view>
+      <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+        <view class="empty" wx:if="{{items['experiences'].length==0}}">
+          <image src="/images/empty.png" />
+          <view class='empty-text'>暂无内容</view>
+        </view>
+        <view class="weui-form-preview" wx:for="{{items['experiences']}}" wx:key="*this">
+          <view class="weui-form-preview__hd">
+            <view class="weui-form-preview__label">{{item.title}}</view>
+            <view class="weui-form-preview__value_in-hd" style="visibility:hidden;">a</view>
+          </view>
+          <view class="weui-form-preview__bd">
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">状态</view>
+              <view class="weui-form-preview__value">{{item.status==1?'上架':'下架'}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">地区</view>
+              <view class="weui-form-preview__value">{{item.province+','+item.city+','+item.district}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">时间</view>
+              <view class="weui-form-preview__value">{{item.created_at}}</view>
+            </view>
+          </view>
+          <view class="weui-form-preview__ft">
+            <navigator url="/pages/experience/experience?id={{item.id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">查看详情</navigator>
+          </view>
+        </view>
+      </view>
+      <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
+        <view class="empty" wx:if="{{items['specialties'].length==0}}">
+          <image src="/images/empty.png" />
+          <view class='empty-text'>暂无内容</view>
+        </view>
+        <view class="weui-form-preview" wx:for="{{items['specialties']}}" wx:key="*this">
+          <view class="weui-form-preview__hd">
+            <view class="weui-form-preview__label">{{item.title}}</view>
+            <view class="weui-form-preview__value_in-hd" style="visibility:hidden;">a</view>
+          </view>
+          <view class="weui-form-preview__bd">
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">状态</view>
+              <view class="weui-form-preview__value">{{item.status==1?'已发布':'排版中'}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">地区</view>
+              <view class="weui-form-preview__value">{{item.province+','+item.city+','+item.district}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">时间</view>
+              <view class="weui-form-preview__value">{{item.created_at}}</view>
+            </view>
+          </view>
+          <view class="weui-form-preview__ft">
+            <navigator url="/pages/specialty/specialty?id={{item.id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">查看详情</navigator>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{!loadmore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已到底部</view>
+  </view>
+  <view class="widget-add" bindtap="addInfo">
+    <view class="add-wrap">
+      <view class="icon icon-top"></view>
+      <view>发布</view>
+    </view>
+  </view>
+</view>

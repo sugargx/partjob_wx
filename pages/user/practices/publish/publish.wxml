@@ -1,0 +1,68 @@
+<!--pages/user/practices/publish/publish.wxml-->
+<view class="page">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="weui-cells__title" wx:if="{{publish[0]!=-1}}">发布实习生，今天您可以发布{{publish[0]}}条，已发布{{publish[1]}}条。</view>
+    <view class="weui-cells__title" wx:if="{{publish[0]==-1}}">发布实习生</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">标题</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入标题" name="title" />
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">招聘简章</view>
+        </view>
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入招聘简章" maxlength="-1" style="height: 10em" name="content" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">工作地区</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="region" bindchange="bindRegionChange" value="{{region}}" name="region">
+            <view class="weui-select weui-select_in-select-after">{{region}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">联系电话</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入联系电话" name="contact_phone" type="number" value="{{contact_phone}}" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">公司图片</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files" id="uploaderFiles" style="margin:20rpx 0 25rpx 0;">
+                <block wx:for="{{images}}" wx:key="*this">
+                  <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                    <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                  </view>
+                </block>
+              </view>
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__tips"></view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" formType="submit">确定</button>
+    </view>
+  </form>
+</view>

@@ -1,0 +1,94 @@
+<!--pages/user/experiences/publish/publish.wxml-->
+<view class="page">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="weui-cells__title">发布成长体验</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">标题</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入标题" name="title" />
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">活动主题</view>
+        </view>
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入活动主题" maxlength="500" style="height: 10em" name="activity_theme" />
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">活动内容</view>
+        </view>
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入活动内容" maxlength="500" style="height: 10em" name="activity_content" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">体验地区</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="region" bindchange="bindRegionChange" value="{{region}}" name="region">
+            <view class="weui-select weui-select_in-select-after">{{region}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">时间安排</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入时间安排" name="time_arrangement" />
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">报名须知</view>
+        </view>
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入报名须知" maxlength="500" style="height: 10em" name="registration_notice" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">缩略图</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__input-box" style="margin:20rpx 0 25rpx 0;">
+                <input style="display:none;" value="{{image}}" name="image" />
+                <image class="weui-uploader__img" src="{{image}}" mode="scaleToFill" />
+                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">收取保证金</view>
+        </view>
+        <view class="weui-cell__bd">
+          <switch class="weui-input" style="float:right;" name="deposit" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">仅限会员</view>
+        </view>
+        <view class="weui-cell__bd">
+          <switch class="weui-input" style="float:right;" name="vip" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__tips">{{tip}}</view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" formType="submit">确定</button>
+    </view>
+  </form>
+</view>

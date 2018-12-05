@@ -1,0 +1,38 @@
+<!--pages/help_after/help_after.wxml-->
+<view class='first'>
+  <view class='helpmoney'>成功帮好友涨###元工资！</view>
+  <button class='but_special'>我也要报名</button>
+  <view class='num'>— 已有15位朋友发送助力包 —</view>
+
+  <view class='all'>
+    <view class='item'>
+      <image src='/images/contact.png' style='width:50rpx;height:50rpx;border-radius:50%'></image>
+      <view class='name'>名字</view>
+      <span class="tag">最给力</span>
+      <view class='count'>
+        <span class="count_num">1</span>
+        个</view>
+    </view>
+    <view class='item'>
+      <image src='/images/contact.png' style='width:50rpx;height:50rpx;border-radius:50%'></image>
+      <view class='name'>名字</view>
+      <span class="tag">最给力</span>
+      <view class='count'>
+        <span class="count_num">1</span>
+        个</view>
+    </view>
+  </view>
+</view>
+<view class='second'>
+  <view class='info'>— 活动规则 —</view>
+  <view class='show'>
+    <view>1、每位用户可邀请的好友数量无上限。</view>
+    <view> 2、每位用户每天最多帮助5位加速。</view>
+    <view>3、进入页面后，会自动帮助您的好友抽取加速包，加速。</view>
+  </view>
+</view>
+<view class='add'>
+   <image src='/images/order.png'></image>
+   <view class='show_info'>添加到我的小程序</view>
+   <button>添加</button>
+</view>

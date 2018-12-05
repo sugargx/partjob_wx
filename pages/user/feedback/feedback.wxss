@@ -1,0 +1,4 @@
+/* pages/user/feedback/feedback.wxss */
+page {
+  background: #f8f8f8;
+}

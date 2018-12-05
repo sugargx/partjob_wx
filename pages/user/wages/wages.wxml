@@ -1,0 +1,44 @@
+<!--pages/user/wages/wages.wxml-->
+<view class="page">
+  <view class="empty" wx:if="{{wages.length==0}}">
+    <image src="/images/empty.png" />
+    <view class='empty-text'>暂无内容</view>
+  </view>
+  <view class="weui-form-preview" wx:for="{{wages}}" wx:key="*this">
+    <view class="weui-form-preview__hd">
+      <view class="weui-form-preview__label">{{info.title}}</view>
+      <view class="weui-form-preview__value_in-hd" style="visibility:hidden;">a</view>
+    </view>
+    <view class="weui-form-preview__bd">
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">报名时间</view>
+        <view class="weui-form-preview__value">{{item.paid_at}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">姓名/昵称</view>
+        <view class="weui-form-preview__value">{{item.user.fullname==null?item.user.nickname:item.user.fullname}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">手机号码</view>
+        <view class="weui-form-preview__value">{{item.user.mobilephone}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">签到时间</view>
+        <view class="weui-form-preview__value">{{item.verified_at}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">发放工资</view>
+        <view class="weui-form-preview__value">{{item.pay_wages_at}}</view>
+      </view>
+    </view>
+    <view class="weui-form-preview__ft" wx:if="{{item.pay_wages_at==''}}">
+      <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="handlePayWages" data-id="{{item.id}}">发放工资</view>
+    </view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{!loadmore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已到底部</view>
+  </view>
+</view>
+<modal hidden="{{hiddenmodalput}}" title="请输入工资" confirm-text="确定" cancel-text="取消" bindcancel="handleCancel" bindconfirm="handleConfirm" >  
+    <input type='digit' placeholder="请输入工资" bindinput="handleInput" auto-focus/>  
+</modal>  

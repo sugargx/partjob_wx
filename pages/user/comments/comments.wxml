@@ -1,0 +1,36 @@
+<!--pages/user/comments/comments.wxml-->
+<view class="page">
+  <view class="empty" wx:if="{{comments.length==0}}">
+    <image src="/images/empty.png" />
+    <view class='empty-text'>暂无内容</view>
+  </view>
+  <!-- 只显示最新的3条 -->
+  <view class="weui-form-preview" wx:for="{{comments}}" wx:key="*this" wx:if="index<3">
+    <view class="weui-form-preview__hd">
+      <view class="weui-form-preview__label">{{item.info.title}}</view>
+      <view class="weui-form-preview__value_in-hd" style="visibility:hidden;">a</view>
+    </view>
+    <view class="weui-form-preview__bd">
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">时间</view>
+        <view class="weui-form-preview__value">{{item.created_at}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">内容</view>
+        <view class="weui-form-preview__value">{{item.content}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">回复</view>
+        <view class="weui-form-preview__value">{{item.replied_content==null?'无':item.replied_content}}</view>
+      </view>
+    </view>
+    <view class="weui-form-preview__ft">
+      <navigator url="/pages/info/info?id={{item.info_id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">查看</navigator>
+    </view>
+    <button bindtap='commentsAll'>查看更多</button>
+  </view>
+  
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{!loadmore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已到底部</view>
+  </view>
+</view>

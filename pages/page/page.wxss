@@ -1,0 +1,26 @@
+/* pages/page/page.wxss */
+@import '../../wxParser/index.wxss';
+
+Page {
+  background-color: #f8f8f8;
+}
+
+.container {
+  background: white;
+  min-height: 800px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.page__title {
+  text-align: center;
+  font-size: 20px;
+  padding-top: 20rpx;
+}
+.weui-media-box__info__meta {
+  padding-left:40rpx;
+}
+
+.wxParser {
+  padding:0 5px;
+}

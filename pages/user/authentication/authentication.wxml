@@ -1,0 +1,73 @@
+<!--pages/user/authentication/authentication.wxml-->
+<view class="page">
+  <form bindsubmit="formSubmit">
+    <view class="weui-cells__title">会员认证
+      <label style="float:right;">{{vip_expired_at}}</label>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">姓名/企业名称</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入真实姓名/企业名称" name="fullname" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">服务城市</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="region" bindchange="bindRegionChange" value="{{region}}" name="region" custom-item="全部">
+            <view class="weui-select weui-select_in-select-after">{{region.length>0?region[0]+','+region[1]:''}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">认证类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="selector" bindchange="bindUserTypeChange" value="{{user_type}}" range="{{user_types}}" name="user_type">
+            <view class="weui-select weui-select_in-select-after">{{user_types[user_type]}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">认证年份</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="selector" bindchange="bindYearChange" value="{{year}}" range="{{years}}" name="year">
+              <view class="weui-select weui-select_in-select-after">{{years[year]}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">认证照片</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files" id="uploaderFiles" style="margin:20rpx 0 25rpx 0;">
+                <block wx:for="{{photo}}" wx:key="*this">
+                  <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                    <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                  </view>
+                </block>
+              </view>
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__tips">学生版上传个人学生证和身份证照片，认证费用为{{prices[0]}}元/年；企业版上传营业执照或申请人身份证照片，认证费用为{{prices[1]}}元/年。</view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" form-type="submit" disabled="{{loading}}" loading="{{loading}}">确定支付{{amount>0?amount+'元':''}}</button>
+    </view>
+  </form>
+</view>

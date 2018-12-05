@@ -1,0 +1,11 @@
+<view class='body'>
+  <!-- 背景图片 -->
+  <image src='/images/back.jpg' mode='scaleTofill' style='width:100%;height:100%;'></image>
+  <!-- 内容 -->
+  <view class='content'>
+    <image src='/images/comment.png' class='avator'></image>
+    <view class='info'>我在中创卓立平台报名了兼职活动，快来帮我涨工资吧！</view>
+    <view class='newpay'>已涨到15元/小时</view>
+    <button class='weui-btn' style='width:90%;' bindtap='tohelp'>帮好友涨工资</button>
+  </view>
+</view>

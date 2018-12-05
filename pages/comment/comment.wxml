@@ -1,0 +1,19 @@
+<!--pages/comment/comment.wxml-->
+<view class="page">
+  <form bindsubmit="formSubmit">
+    <view class="weui-cells__title">发布留言和回复</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+        </view>
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入内容" style="height: 100px;" name="content" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__tips">文明评论，理性留言。</view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" form-type="submit">提交</button>
+    </view>
+  </form>
+</view>

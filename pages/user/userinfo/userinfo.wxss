@@ -1,0 +1,4 @@
+/* pages/user/userinfo/userinfo.wxss */
+page {
+  background: #F8F8F8;
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "userinfo": "/components/userinfo/userinfo"
+  },
+  "enablePullDownRefresh": true
+}

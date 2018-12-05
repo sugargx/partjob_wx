@@ -1,0 +1,36 @@
+/* components/userinfo.wxss */
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background: #da251c; */
+  height: 360rpx;
+}
+
+.user-avatar {
+  width: 140rpx;
+  height: 140rpx;
+  margin-top: 20rpx;
+  border-radius: 50%;
+  /* border: 2px solid #e65850; */
+}
+
+.user-nickname {
+  color: #fff;
+  /* margin-top:10rpx; */
+  font-size:14px;
+}
+
+.user-label {
+  border-radius: 2px;
+  margin-left:5px;
+  padding: 5rpx 10rpx;
+  border: 1px solid #fff;
+  color: #fff;
+  margin-right: 10rpx;
+  text-align: center;
+  width: 30px;
+  height: 12px;
+  font-size: 12px;
+  line-height: 12px;
+}

@@ -1,0 +1,79 @@
+<!--pages/specialty/specialty.wxml-->
+<import src="../../wxParser/index.wxml" />
+<view class="info-header">
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="info-title">
+        <image src="/images/detail.png" style="width: 18px;height: 18px;margin-right: 5px" /> {{specialty.title}}</view>
+    </view>
+    <navigator url="/pages/user/lists/lists?id={{specialty.id}}"  class="button-management" wx:if="{{specialty.user_id==userId}}">报名列表</navigator>
+  </view>
+</view>
+<view class="info" style="padding-bottom:80px;">
+  <view class="weui-panel">
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <navigator url="/pages/page/page?a=aggrement" class="weui-cell" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image src="/images/aggrement.png" style="width: 15px;height: 15px;margin-right: 5px" />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>报名表示您已同意
+                <view class="weui-agree__link">《中创卓立用户协议》</view>
+              </view>
+            </view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-panel">
+    <view class="weui-panel__hd">
+      内容
+    </view>
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_text">
+        <view class="wxParser">
+          <template is="wxParser" data="{{wxParserData:richText.nodes}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__hd">报名列表</view>
+    <view class="weui-panel__bd">
+      <view class="weui-loadmore weui-loadmore_line" wx:if="{{orders.length==0}}">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无报名</view>
+      </view>
+      <view class="weui-media-box weui-media-box_appmsg" wx:for="{{orders}}" wx:key="*this">
+        <view class="weui-media-box__hd">
+          <image class="userinfo-avatar" src="{{item.user.avatar}}" />
+        </view>
+        <view class="weui-media-box__bd">
+          <p class="weui-media-box__title">{{item.user.nickname}}
+            <label class="info-authentication-label" style="margin-left:5px;" wx:if="{{item.user.vip}}">VIP</label>
+          </p>
+          <p class="weui-media-box__desc">报名时间: {{item.created_at}}</p>
+        </view>
+      </view>
+    </view>
+  </view> -->
+</view>
+<form class="info-footer" bindsubmit="formSubmit" bindreset="formReset" report-submit="true">
+  <view class="weui-flex">
+    <button class="info-footer-icon" open-type="share" plain="true">
+      <image src="/images/share.png"></image>
+      <view class="info-label">分享</view>
+    </button>
+    <!-- <view class="info-footer-icon" style="margin-right:25px;" bindtap="handleService">
+      <image src="/images/service.png"></image>
+      <view class="info-label">客服</view>
+    </view> -->
+    <view class="weui-flex__item">
+      <!-- <button class="weui-btn" formType="submit" loading="{{loading}}" type="{{specialty.joinButtonType}}" disabled="{{specialty.joinButtonDisabled}}" wx:if="{{specialty.joinButtonText!='已报名'}}" >{{specialty.joinButtonText}}</button>
+       <button class="weui-btn" type="primary" bindtap="handleContact" wx:if="{{specialty.joinButtonText=='已报名'}}">已报名，立即联系</button> -->
+      <button class="weui-btn" formType="submit" loading="{{loading}}" type="{{specialty.joinButtonType}}" disabled="{{specialty.joinButtonDisabled}}">立即联系</button>
+    </view>
+  </view>
+</form>

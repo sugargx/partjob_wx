@@ -1,0 +1,35 @@
+/* pages/practices/index/index.wxss */
+
+Page {
+  background: #f8f8f8;
+}
+
+.weui-loadmore__tips_in-line{
+  background-color: #f8f8f8;
+}
+
+.list {
+  margin: 10px 10px 0 10px;
+  padding: 0 10px;
+  text-align: center;
+  height: 12em;
+  color: #fff;
+  border-radius: 5px;
+}
+.list-title {
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top:3.3em;
+}
+.list-line {
+  margin:0 auto;
+  width:100rpx;
+  border-bottom: 2px solid #ffffff;
+  padding-top:0.8em;
+}
+.list-subtitle {
+  font-size:12px;
+  padding-top:1em;
+}

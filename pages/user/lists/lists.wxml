@@ -1,0 +1,39 @@
+<!--pages/user/lists/lists.wxml-->
+<view class="empty" wx:if="{{lists.length==0}}">
+  <image src="/images/empty.png" />
+  <view class='empty-text'>暂无内容</view>
+</view>
+<view class="info" style="padding-bottom:80px;" wx:if="{{lists.length>0}}">
+  <view class="weui-panel">
+    <view class="weui-panel__hd" style="padding-right:5px;">{{info.title}}
+      <label style='float:right;'  wx:if="{{ info.order_type==1 || info.order_type==3 }}">数量 : {{total}}</label>
+    </view>
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <view class="weui-cell" hover-class="weui-cell_active" wx:for="{{lists}}" wx:key="*this">
+            <view class="weui-cell__bd weui-cell_primary">
+              <view class="weui-flex">
+                <view class="weui-flex__item">
+                  <view><label style="margin-right:5px;">{{index+1}}</label>{{item.user.fullname?item.user.fullname:item.user.nickname}}({{genders[item.user.gender]}})</view>
+                </view>
+                <view class="weui-flex__item">
+                  <view  data-phone="{{item.user.mobilephone}}" bindtap="handleContact" style="color:#09bb07;">{{item.user.mobilephone}}</view>
+                </view>
+                <view class="weui-flex__item" wx:if="{{!item.verified_at && (info.info_type==1 || info.info_type==3)}}">
+                  <label class="button-management" bindtap="handleSign" data-id="{{item.id}}">签到</label>
+                </view>
+                <view class="weui-flex__item" wx:if="{{item.verified_at  && (info.info_type==1 || info.info_type==3)}}">
+                  <label style="float:right;margin-right:5px;">已签到</label>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{!loadmore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已到底部</view>
+  </view>
+</view>

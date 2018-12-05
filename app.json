@@ -1,0 +1,78 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/city/city",
+    "pages/page/page",
+    "pages/infos/infos",
+    "pages/info/info",
+    "pages/lists/lists",
+    "pages/practice/practice",
+    "pages/experience/experience",
+    "pages/specialty/specialty",
+    "pages/comment/comment",
+    "pages/user/login/login",
+    "pages/user/index/index",
+    "pages/user/infos/publish/publish",
+    "pages/user/management/management",
+    "pages/user/practices/publish/publish",
+    "pages/user/experiences/publish/publish",
+    "pages/user/specialties/publish/publish",
+    "pages/user/orders/orders",
+    "pages/user/comments/comments",
+    "pages/user/commentsall/commentsall",
+    "pages/user/wallet/wallet",
+    "pages/user/money/money",
+    "pages/user/wages/wages",
+    "pages/user/lists/lists",
+    "pages/user/userinfo/userinfo",
+    "pages/user/authentication/authentication",
+    "pages/user/sign/sign",
+    "pages/user/feedback/feedback",
+    "pages/news/news",
+    "pages/help/help",
+    "pages/help_after/help_after"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "white",
+    "navigationBarTitleText": "中创卓立",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#f48C23D",
+    "backgroundColor": "#ffffff",
+    "color": "#8a8a8a",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/homeh.png"
+      },
+      {
+        "text": "捡职",
+        "pagePath": "pages/infos/infos",
+        "iconPath": "images/infos.png",
+        "selectedIconPath": "images/infosh.png"
+      },
+      {
+        "text": "发布",
+        "pagePath": "pages/user/management/management",
+        "iconPath": "images/publish.png",
+        "selectedIconPath": "images/publishh.png"
+      },
+      {
+        "text": "消息",
+        "pagePath": "pages/news/news",
+        "iconPath": "images/publish.png",
+        "selectedIconPath": "images/publishh.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/user/index/index",
+        "iconPath": "images/news.png",
+        "selectedIconPath": "images/newsh.png"
+      }
+    ]
+  }
+}

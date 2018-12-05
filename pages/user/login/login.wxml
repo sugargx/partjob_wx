@@ -1,0 +1,15 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <view class="login">
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <userinfo avatar="{{avatar}}" nickname="登录/注册" url="{{url}}"></userinfo>
+      <view class="weui-btn-area">
+        <view class="weui-flex">
+          <view class="weui-flex__item">
+            <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" type="primary" style="margin:20px;"> 微信快捷登录</button>
+          </view>
+        </view>
+      </view>
+    </form>
+  </view>
+</view>
